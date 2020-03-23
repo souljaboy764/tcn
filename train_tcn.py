@@ -24,7 +24,9 @@ def get_args():
 	parser.add_argument('--mode', choices=['single','multi'], default='multi', help='Whether to use Single View or Multi View TCN')
 	parser.add_argument('--train-directory', type=str, default='./data/train/', help='Directory with the training videos')
 	parser.add_argument('--validation-directory', type=str, default='./data/val/', help='Directory with the validation videos')
-	parser.add_argument('--train-suffix', type=str, default='_C[.]*.*', help='Suffix to search training with')
+	# Using a suffix to differentiate the different views, like in the orinigal Tensorflow code.
+	parser.add_argument('--train-suffix', type=str, default='_C[.]*.*', help='Suffix to partition training videos based on the different views')
+
 	parser.add_argument('--minibatch-size', type=int, default=32, help='Mini batch size to use for training')
 	parser.add_argument('--margin', type=float, default=2.0, help='Margin for the loss function')
 	parser.add_argument('--model-name', type=str, default='tcn', help='Name for the model to be saved')
